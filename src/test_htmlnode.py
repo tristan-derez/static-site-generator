@@ -56,10 +56,7 @@ class TestHTMLNode(unittest.TestCase):
         grandchild_node = LEAFNode("b", "grandchild")
         child_node = ParentNode("span", [grandchild_node])
         parent_node = ParentNode("div", [child_node])
-        self.assertEqual(
-            parent_node.to_html(),
-            "<div><span><b>grandchild</b></span></div>",
-        )
+        self.assertEqual(parent_node.to_html(), "<div><span><b>grandchild</b></span></div>")
 
     def test_to_html_many_children(self):
         node = ParentNode(
@@ -83,10 +80,7 @@ class TestHTMLNode(unittest.TestCase):
                 LEAFNode(None, "Normal text"),
             ],
         )
-        self.assertEqual(
-            node.to_html(),
-            "<h2><b>Bold text</b>Normal text<i>italic text</i>Normal text</h2>",
-        )
+        self.assertEqual(node.to_html(),"<h2><b>Bold text</b>Normal text<i>italic text</i>Normal text</h2>")
 
 
 if __name__ == "__main__":
