@@ -20,21 +20,21 @@ class TestHTMLNode(unittest.TestCase):
         result = node.props_to_html()
         self.assertEqual(result, '')
 
-    def test_LEAFNode_no_value(self):
+    def test_leafnode_no_value(self):
         with self.assertRaises(ValueError):
             LEAFNode("p", value=None)
 
-    def test_LEAFNode_no_props(self):
+    def test_leafnode_no_props(self):
         value = "hey! i'm a text"
         node = LEAFNode("p", value)
         self.assertEqual(node.to_html(), f"<p>{value}</p>")
 
-    def test_LEAFNode_no_tag(self):
+    def test_leafnode_no_tag(self):
         value = "hey! i'm a text"
         node = LEAFNode(None, value)
         self.assertEqual(node.to_html(), f"{value}")
 
-    def test_LEAFNode_with_props(self):
+    def test_leafnode_with_props(self):
         tag = "a"
         value = "hey! i'm a link"
         props = {'href': 'https://example.com', 'target': '_blank'}
