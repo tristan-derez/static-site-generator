@@ -52,9 +52,7 @@ class TestInlineMD(unittest.TestCase):
         )
 
     def test_delimiter_double_bold(self):
-        node = TextNode(
-            "A text with a **bolded** word and **another**", text_type_text
-        )
+        node = TextNode("A text with a **bolded** word and **another**", text_type_text)
         new_nodes = split_nodes_delimiter([node], "**", text_type_bold)
         self.assertListEqual(
             [
@@ -76,19 +74,25 @@ class TestInlineMD(unittest.TestCase):
             "This is a text with an ![image](https://i.imgur.com/blabla.jpg)"
         )
         self.assertListEqual([("image", "https://i.imgur.com/blabla.jpg")], matches)
-    
+
     def test_extract_markdown_links(self):
-        matches = extract_markdown_links("This is a text with a normal [link](https://example.com)")
+        matches = extract_markdown_links(
+            "This is a text with a normal [link](https://example.com)"
+        )
         self.assertListEqual([("link", "https://example.com")], matches)
 
     def test_extract_markdown_multilinks(self):
-        matches = extract_markdown_links("This is a text with a normal [link](https://example.com) and [another one](https://dev.link.com/dev)")
+        matches = extract_markdown_links(
+            "This is a text with a normal [link](https://example.com) and [another one](https://dev.link.com/dev)"
+        )
         self.assertListEqual(
             [
                 ("link", "https://example.com"),
-                ("another one", "https://dev.link.com/dev")
-            ], 
-            matches)
+                ("another one", "https://dev.link.com/dev"),
+            ],
+            matches,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
