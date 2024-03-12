@@ -83,7 +83,12 @@ class TestInlineMD(unittest.TestCase):
 
     def test_extract_markdown_multilinks(self):
         matches = extract_markdown_links("This is a text with a normal [link](https://example.com) and [another one](https://dev.link.com/dev)")
-        self.assertListEqual([("link", "https://example.com"), ("another one", "https://dev.link.com/dev")], matches)
+        self.assertListEqual(
+            [
+                ("link", "https://example.com"),
+                ("another one", "https://dev.link.com/dev")
+            ], 
+            matches)
 
 if __name__ == "__main__":
     unittest.main()
