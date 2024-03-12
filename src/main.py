@@ -2,7 +2,7 @@ import os
 import shutil
 
 from copy_dir import copy_directory_folder
-from generate_page import generate_page
+from generate_page import generate_pages_recursive
 
 
 def main():
@@ -15,11 +15,12 @@ def main():
 
     copy_directory_folder(src_dir, dest_dir)
 
-    source_path = "./content/index.md"
+    content_dir = "./content"
     template_path = "./template.html"
-    destination_path = "./public/index.html"
 
-    generate_page(source_path, template_path, destination_path)
+    generate_pages_recursive(content_dir, template_path, dest_dir)
+
+    print("Site generation completed successfully.")
 
 
 main()
