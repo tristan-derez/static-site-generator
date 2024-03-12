@@ -1,5 +1,7 @@
 import unittest
 from inline_md import (
+    extract_markdown_links,
+    extract_markdown_images,
     split_nodes_delimiter,
 )
 
@@ -69,6 +71,19 @@ class TestInlineMD(unittest.TestCase):
         with self.assertRaises(ValueError):
             split_nodes_delimiter([node], "`", text_type_code)
 
+    def test_extract_markdown_images(self):
+        matches = extract_markdown_images(
+            "This is a text with an ![image](https://i.imgur.com/blabla.jpg)"
+        )
+        self.assertListEqual([("image", "https://i.imgur.com/blabla.jpg")], matches)
+    
+    def test_extract_markdown_links(self):
+        matches = extract_markdown_links("This is a text with a normal [link](https://example.com)")
+        self.assertListEqual([("link", "https://example.com")], matches)
+
+    def test_extract_markdown_multilinks(self):
+        matches = extract_markdown_links("This is a text with a normal [link](https://example.com) and [another one](https://dev.link.com/dev)")
+        self.assertListEqual([("link", "https://example.com"), ("another one", "https://dev.link.com/dev")], matches)
 
 if __name__ == "__main__":
     unittest.main()
