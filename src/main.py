@@ -2,6 +2,7 @@ import os
 import shutil
 
 from copy_dir import copy_directory_folder
+from generate_page import generate_page
 
 
 def main():
@@ -13,6 +14,12 @@ def main():
         print(f"Deleted contents of {dest_dir}")
 
     copy_directory_folder(src_dir, dest_dir)
+
+    source_path = "./content/index.md"
+    template_path = "./template.html"
+    destination_path = "./public/index.html"
+
+    generate_page(source_path, template_path, destination_path)
 
 
 main()
