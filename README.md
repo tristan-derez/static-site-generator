@@ -6,7 +6,8 @@ Files in content folder are generated to html files
 
 ### Requirements
 
-- [Python](https://www.python.org/downloads/) installed on your machine
+- [Python 3.11+](https://www.python.org/downloads/) installed on your machine
+- A unix-like shell (bash, zsh, fish, etc.)
 
 ### Run the project:
 
