@@ -22,16 +22,9 @@ def markdown_to_blocks(markdown):
 
 def block_to_block_type(block):
     lines = block.split("\n")
+    heading_prefixes = ["# ", "## ", "### ", "#### ", "##### ", "###### "]
 
-    if (
-        block.startswith("# ")
-        or block.startswith("# ")
-        or block.startswith("## ")
-        or block.startswith("### ")
-        or block.startswith("#### ")
-        or block.startswith("##### ")
-        or block.startswith("###### ")
-    ):
+    if any(block.startswith(prefix) for prefix in heading_prefixes):
         return blocktype_heading
     if len(lines) > 1 and lines[0].startswith("```") and lines[-1].startswith("```"):
         return blocktype_code
