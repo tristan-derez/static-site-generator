@@ -54,7 +54,7 @@ def block_to_html_node(block):
 def block_to_block_type(block):
     lines = block.split("\n")
 
-    if re.match(r"^#+\s", block):
+    if re.match(r"^#{1,6}\s", block):
         return blocktype_heading
     if len(lines) > 1 and lines[0].startswith("```") and lines[-1].startswith("```"):
         return blocktype_code
